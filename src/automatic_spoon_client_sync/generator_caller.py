@@ -28,8 +28,8 @@ class GeneratorCaller:
         json_data = resp.json()
         return GeneratorSchema.model_validate(json_data)
 
-    def stop_generator(self, id: int) -> GeneratorSchema:
-        resp = httpx.patch(self._host + "/api/v1/generators/" + str(id) + "/stop")
+    def close_generator(self, id: int) -> GeneratorSchema:
+        resp = httpx.patch(self._host + "/api/v1/generators/" + str(id) + "/close")
         _ = resp.raise_for_status()
         json_data = resp.json()
         return GeneratorSchema.model_validate(json_data)
