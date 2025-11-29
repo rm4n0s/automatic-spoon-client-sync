@@ -1,4 +1,5 @@
 import httpx
+from pytsterrors import TSTError
 
 from .schemas import ImageSchema
 
@@ -11,13 +12,23 @@ class ImageCaller:
 
     def get_list_images(self) -> list[ImageSchema]:
         resp = httpx.get(self._host + "/api/v1/images")
-        _ = resp.raise_for_status()
+        if resp.status_code >= 400:
+            raise TSTError(
+                "failed-list-images",
+                "failed to list images",
+                metadata={"content": resp.text, "http_status": resp.status_code},
+            )
         json_data = resp.json()
         return [ImageSchema(**item) for item in json_data]
 
     def get_image(self, id: int) -> ImageSchema:
         resp = httpx.get(self._host + "/api/v1/images/" + str(id))
-        _ = resp.raise_for_status()
+        if resp.status_code >= 400:
+            raise TSTError(
+                "failed-get-image",
+                f"failed to get image with id {id}",
+                metadata={"content": resp.text, "http_status": resp.status_code},
+            )
         json_data = resp.json()
         return ImageSchema.model_validate(json_data)
 
@@ -26,7 +37,15 @@ class ImageCaller:
             with client.stream(
                 "GET", self._host + "/api/v1/images/" + str(id) + "/show"
             ) as response:
-                response.raise_for_status()  # Raise an error for bad status codes (e.g., 404)
+                if response.status_code >= 400:
+                    raise TSTError(
+                        "failed-download-image",
+                        f"failed to download image with id {id}",
+                        metadata={
+                            "content": response.text,
+                            "http_status": response.status_code,
+                        },
+                    )
                 with open(file_path, "wb") as f:
                     for chunk in response.iter_bytes(
                         chunk_size=8192
