@@ -10,6 +10,7 @@ from .enums import (
     JobStatus,
     LongPromptTechnique,
     PathType,
+    PipeType,
     Scheduler,
     Variant,
 )
@@ -61,6 +62,7 @@ class EngineSchema(BaseModel):
     width: int
     height: int
     steps: int
+    pipe_type: PipeType
     long_prompt_technique: LongPromptTechnique | None = None
     vae_model: AIModelSchema | None = None
     controlnet_conditioning_scale: float | None = None

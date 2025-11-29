@@ -103,3 +103,8 @@ class GeneratorResultType(enum.StrEnum):
 class ManagerSignalType(enum.StrEnum):
     NEW_JOB = "new_job"
     CHECK_WAITING_JOBS = "check_waiting_jobs"
+
+
+class PipeType(enum.StrEnum):
+    TXT2IMG = "txt2img"
+    IMG2IMG = "img2img"

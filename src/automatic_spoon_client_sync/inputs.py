@@ -7,6 +7,7 @@ from .enums import (
     FileImageType,
     LongPromptTechnique,
     PathType,
+    PipeType,
     Scheduler,
     Variant,
 )
@@ -59,6 +60,7 @@ class EngineUserInput(BaseModel):
     width: int
     height: int
     steps: int
+    pipe_type: PipeType
     lora_model_ids: list[LoraIDAndWeight] = Field(default=[])
     conrol_net_model_ids: list[int] = Field(default=[])
     embedding_model_ids: list[int] = Field(default=[])

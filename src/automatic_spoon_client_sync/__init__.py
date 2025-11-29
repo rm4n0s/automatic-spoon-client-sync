@@ -12,6 +12,7 @@ from .enums import (
     LongPromptTechnique,
     ManagerSignalType,
     PathType,
+    PipeType,
     Scheduler,
     Variant,
 )
@@ -55,6 +56,7 @@ __all__ = [
     "ControlNetType",
     "FileImageType",
     "GeneratorStatus",
+    "PipeType",
     "JobStatus",
     "LongPromptTechnique",
     "PathType",
