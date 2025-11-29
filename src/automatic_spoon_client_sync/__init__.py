@@ -17,6 +17,7 @@ from .enums import (
 )
 from .generator_caller import GeneratorCaller
 from .gpu_caller import GPUCaller
+from .image_caller import ImageCaller
 from .info_caller import InfoCaller
 from .inputs import (
     AIModelUserInput,
@@ -41,6 +42,7 @@ from .schemas import (
 )
 
 __all__ = [
+    "ImageCaller",
     "AIModelCaller",
     "EngineCaller",
     "GeneratorCaller",
