@@ -16,6 +16,7 @@ from .enums import (
     Scheduler,
     Variant,
 )
+from .exceptions import CreationError, ErrorField
 from .generator_caller import GeneratorCaller
 from .gpu_caller import GPUCaller
 from .image_caller import ImageCaller
@@ -43,6 +44,8 @@ from .schemas import (
 )
 
 __all__ = [
+    "CreationError",
+    "ErrorField",
     "ImageCaller",
     "AIModelCaller",
     "EngineCaller",
