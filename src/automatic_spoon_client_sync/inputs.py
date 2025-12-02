@@ -1,3 +1,5 @@
+from typing import Any
+
 from pydantic import BaseModel, Field
 
 from .enums import (
@@ -64,6 +66,8 @@ class EngineUserInput(BaseModel):
     lora_model_ids: list[LoraIDAndWeight] = Field(default=[])
     conrol_net_model_ids: list[int] = Field(default=[])
     embedding_model_ids: list[int] = Field(default=[])
+    scaling_factor_enabled: bool | None = None
+    scheduler_config: dict[str, Any] | None = None
     long_prompt_technique: LongPromptTechnique | None = None
     vae_model_id: int | None = None
     controlnet_conditioning_scale: float | None = None
