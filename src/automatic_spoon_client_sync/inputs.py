@@ -48,8 +48,8 @@ class GeneratorUserInput(BaseModel):
     gpu_id: int = Field(default=0)
 
 
-class LoraIDAndWeight(BaseModel):
-    lora_id: int
+class LoraIDAndWeightInput(BaseModel):
+    lora_model_id: int
     weight: int
 
 
@@ -63,7 +63,7 @@ class EngineUserInput(BaseModel):
     height: int
     steps: int
     pipe_type: PipeType
-    lora_model_ids: list[LoraIDAndWeight] = Field(default=[])
+    lora_model_ids: list[LoraIDAndWeightInput] = Field(default=[])
     conrol_net_model_ids: list[int] = Field(default=[])
     embedding_model_ids: list[int] = Field(default=[])
     scaling_factor_enabled: bool | None = None
