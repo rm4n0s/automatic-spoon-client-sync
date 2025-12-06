@@ -1,3 +1,4 @@
 httpx
+httpx-ws
 pydantic
 pytsterrors

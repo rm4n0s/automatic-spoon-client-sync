@@ -1,3 +1,5 @@
+from websocket_caller import WebsocketCaller
+
 from .aimodel_caller import AIModelCaller
 from .engine_caller import EngineCaller
 from .enums import (
@@ -52,6 +54,7 @@ __all__ = [
     "GeneratorCaller",
     "GPUCaller",
     "InfoCaller",
+    "WebsocketCaller",
     "JobCaller",
     "AIModelBase",
     "AIModelStatus",
