@@ -10,6 +10,6 @@ setup(
     package_dir={"": "src"},
     url="https://github.com/rm4n0s/automatic_spoon_client_sync",
     keywords="http client automatic-spoon",
-    install_requires=["httpx", "pydantic"],
+    install_requires=["httpx", "pydantic", "httpx-ws", "pytsterrors"],
     include_package_data=True,
 )
