@@ -1,3 +1,5 @@
+from typing import Any, Iterator
+
 from httpx_ws import connect_ws
 
 
@@ -7,7 +9,9 @@ class WebsocketCaller:
     def __init__(self, host: str):
         self._host = host
 
-    def iterate_on_generator_events(self, receive_type="json", timeout=None):
+    def iterate_on_generator_events(
+        self, receive_type="json", timeout=None
+    ) -> Iterator[Any]:
         with connect_ws(self._host + "/events/generators") as ws:
             try:
                 while True:
