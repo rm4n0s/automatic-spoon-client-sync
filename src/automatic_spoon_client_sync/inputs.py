@@ -53,7 +53,7 @@ class GeneratorUserInput(BaseModel):
 
 class LoraIDAndWeightInput(BaseModel):
     lora_model_id: int
-    weight: int
+    weight: float
 
 
 class EngineUserInput(BaseModel):
